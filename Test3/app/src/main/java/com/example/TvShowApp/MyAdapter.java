@@ -1,22 +1,27 @@
-package com.example.test3;
+package com.example.TvShowApp;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     Context context;
-    String[] data1;
-    String[] data2;
-    public MyAdapter(Context ct, String s1[], String s2[]){
+    private List<Program> programList = new ArrayList<Program>();
+
+    public MyAdapter(Context ct){
         context = ct;
-        data1 = s1;
-        data2 = s2;
 
     }
     @NonNull
@@ -30,22 +35,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.myText1.setText(data1[position]);
-        holder.myText2.setText(data2[position]);
+        Program program = programList.get(position);
+
+        holder.myText1.setText(program.getTitle());
+        holder.myText2.setText(program.getDescription());
+
+        Picasso.get().load(program.getImageUrl()).into(holder.myImage);
     }
 
     @Override
     public int getItemCount() {
-        return data1.length;
+        return programList.size();
+    }
+
+    public void setProgramList(List<Program> programs) {
+        programList = programs;
+        this.notifyDataSetChanged();
+    }
+
+    public void informError(Exception e) {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView myImage;
         TextView myText1, myText2;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             myText1 = itemView.findViewById(R.id.myTitle);
             myText2 = itemView.findViewById(R.id.myDescrip);
+            myImage = itemView.findViewById(R.id.myImage);
         }
     }
 }

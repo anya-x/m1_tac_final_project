@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.test3">
+    package="com.example.TvShowApp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
 
     <application
         android:allowBackup="true"
@@ -10,12 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Test3">
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.TvShowApp.MainActivity"
             android:exported="true"
             android:configChanges="orientation|screenSize|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

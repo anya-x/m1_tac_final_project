@@ -1,4 +1,4 @@
-package com.example.test3;
+package com.example.TvShowApp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,20 +9,23 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.android.volley.toolbox.Volley;
+
 public class MainActivity extends AppCompatActivity {
-    String[] s1, s2;
     RecyclerView recyclerView;
     MyAdapter myAdapter;
+    TVMazeDatasource datasource;
+
     @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        s1 = getResources().getStringArray(R.array.affirmation);
-        s2 = getResources().getStringArray(R.array.description);
+        datasource = new TVMazeDatasource(Volley.newRequestQueue(this));
         recyclerView = findViewById(R.id.list_test);
-        myAdapter = new MyAdapter(this, s1, s2 );
+        myAdapter = new MyAdapter(this);
+        datasource.fetchPrograms(programs -> { myAdapter.setProgramList(programs) ; }, e -> {myAdapter.informError(e) ;}, "shows");
+
         recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

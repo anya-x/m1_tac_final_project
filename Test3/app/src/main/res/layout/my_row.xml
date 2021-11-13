@@ -20,7 +20,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/myImage"
                 android:layout_width="81dp"
                 android:layout_height="126dp"
                 tools:layout_editor_absoluteY="2dp"
