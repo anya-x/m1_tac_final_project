@@ -26,13 +26,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.RecyclerView);
         recyclerAdapter = new RecyclerAdapter(this, MockData.getData());
         recyclerView.setAdapter(recyclerAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this)); // Vertical Orientation By Default
+        LinearLayoutManager mLayoutManager =new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(mLayoutManager); // Vertical Orientation By Default
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(this, 2);
         sw1 = (Switch)findViewById(R.id.switch1);
         sw1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 if (sw1.isChecked()) {
+                    recyclerView.setLayoutManager(mLayoutManager);
                 } else {
                     recyclerView.setLayoutManager(mGridLayoutManager);
 
