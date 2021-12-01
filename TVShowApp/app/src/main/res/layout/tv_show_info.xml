@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/dog1"
+        tools:layout_editor_absoluteX="29dp"
+        tools:layout_editor_absoluteY="33dp" />
+
+    <TextView
+        android:id="@+id/tvShowTitle"
+        android:layout_width="185dp"
+        android:layout_height="57dp"
+        android:text="vShowTitle"
+        tools:layout_editor_absoluteX="172dp"
+        tools:layout_editor_absoluteY="54dp" />
+
+    <TextView
+        android:id="@+id/subTitle"
+        android:layout_width="185dp"
+        android:layout_height="32dp"
+        android:text="subTitle"
+        tools:layout_editor_absoluteX="121dp"
+        tools:layout_editor_absoluteY="153dp" />
+
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="194dp"
+        android:layout_height="230dp"
+        android:text="detail"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="221dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
